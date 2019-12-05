@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class TaxonomyApp {
 
-	static String DATA = "X:\\tools\\Techknowledgist\\tgist-taxonomy\\data\\techwatch\\"; //"/DATA/techwatch/";
+	static String DATA = "X:\\tools\\Techknowledgist\\tgist-taxonomy\\data\\techwatch\\"; // "/DATA/techwatch/";
 	static String CORPUS, TERMS, FEATS, TAXONOMY;
 
 	public static void main(String[] args) {
@@ -34,15 +34,20 @@ public class TaxonomyApp {
 		// If there are no arguments then we are running this in develop mode
 		// where we define what to do right here in the code.
 
-		CORPUS = "SignalProcessing";
-		CORPUS = "ComputerSciencePatents2002";
-		CORPUS = "ComputerSciencePatents2007";
+//		CORPUS = "SignalProcessing";
+//		CORPUS = "ComputerSciencePatents2002";
+//		CORPUS = "ComputerSciencePatents2007";
 		CORPUS = "Thyme";
 
-		TAXONOMY = "taxonomies/taxonomy-" + CORPUS;
+//		TAXONOMY = "taxonomies/taxonomy-" + CORPUS;
+//
+//		TERMS = DATA + CORPUS + "/classify.MaxEnt.out.s4.scores.sum.az";
+//		FEATS = DATA + CORPUS + ".txt.gz"; // call extract_features.py
 
-		TERMS = DATA + CORPUS + "/classify.MaxEnt.out.s4.scores.sum.az";
-		FEATS = DATA + CORPUS + ".txt.gz"; // call extract_features.py
+		TAXONOMY = "U:/Workspaces/techknowledgist/thyme/taxonomies/taxonomies";
+
+		TERMS = "U:/Workspaces/techknowledgist/thyme/output/output/classify.MaxEnt.out.s4.scores.sum.az";
+		FEATS = "U:/Workspaces/techknowledgist/thyme/taxonomies/features.gz"; // call extract_features.py
 
 		/**
 		 * First four true to start, need to do only once
@@ -57,23 +62,29 @@ public class TaxonomyApp {
 		 */
 		boolean runLoop = false;
 
-		if (runInitialization)
+		if (runInitialization) {
 			initialize(CORPUS, TAXONOMY);
+		}
 
-		if (runImport)
+		if (runImport) {
 			importData(TAXONOMY, TERMS, FEATS);
+		}
 
-		if (runBuildHierarchy)
+		if (runBuildHierarchy) {
 			buildHierarchy(TAXONOMY);
+		}
 
-		if (runAddRelations)
+		if (runAddRelations) {
 			addRelations(TAXONOMY);
+		}
 
-		if (runExport)
+		if (runExport) {
 			exportSQL(TAXONOMY);
+		}
 
-		if (runLoop)
+		if (runLoop) {
 			userLoop(TAXONOMY);
+		}
 	}
 
 	private static void printUsage() {
