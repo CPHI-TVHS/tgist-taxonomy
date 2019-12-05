@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class TaxonomyApp {
 
-	static String DATA = "/DATA/techwatch/";
+	static String DATA = "X:\\tools\\Techknowledgist\\tgist-taxonomy\\data\\techwatch\\"; //"/DATA/techwatch/";
 	static String CORPUS, TERMS, FEATS, TAXONOMY;
 
 	public static void main(String[] args) {
@@ -42,14 +42,20 @@ public class TaxonomyApp {
 		TAXONOMY = "taxonomies/taxonomy-" + CORPUS;
 
 		TERMS = DATA + CORPUS + "/classify.MaxEnt.out.s4.scores.sum.az";
-		FEATS = DATA + CORPUS + ".txt.gz";
+		FEATS = DATA + CORPUS + ".txt.gz"; // call extract_features.py
 
-		boolean runInitialization = false;
-		boolean runImport = false;
-		boolean runBuildHierarchy = false;
-		boolean runAddRelations = false;
-		boolean runExport = false;
-		boolean runLoop = true;
+		/**
+		 * First four true to start, need to do only once
+		 */
+		boolean runInitialization = true;
+		boolean runImport = true;
+		boolean runBuildHierarchy = true;
+		boolean runAddRelations = true;
+		boolean runExport = false; // Don't need
+		/*
+		 * Once first done, run this
+		 */
+		boolean runLoop = false;
 
 		if (runInitialization)
 			initialize(CORPUS, TAXONOMY);
