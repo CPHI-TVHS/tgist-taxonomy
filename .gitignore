@@ -3,6 +3,5 @@
 /nbproject/private/
 /build/
 /dist/
-/bin/
-/exported_tables/
-/taxonomies/
+
+*.class
