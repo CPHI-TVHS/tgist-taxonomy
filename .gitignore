@@ -5,3 +5,6 @@
 /dist/
 
 *.class
+/exported_tables
+/taxonomies
+/bin
